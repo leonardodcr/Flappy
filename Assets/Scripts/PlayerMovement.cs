@@ -23,5 +23,11 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         _alive = false;
+        ScoreKeeper.gameOver = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        ScoreKeeper.scoreValue++;
     }
 }
