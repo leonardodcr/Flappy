@@ -21,6 +21,10 @@ public class ScoreKeeper : MonoBehaviour
             return;
         }
 
-        score.text = $"Game over! Score: {scoreValue}";
+        if (score.color != Color.red)
+        {
+            score.text = $"Game over! Score: {scoreValue}";
+            score.color = Color.red;
+        }
     }
 }
