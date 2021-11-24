@@ -19,10 +19,15 @@ public class PlayerMovement : MonoBehaviour
             KillPlayer();
         }
 
-        if (Input.GetButtonDown("Jump") && alive) 
+        if ((Input.GetButtonDown("Jump") || PhoneJumpInput()) && alive) 
         {
             _rb.velocity = Vector2.up * velocity;
         }
+    }
+
+    bool PhoneJumpInput()
+    {
+        return Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began;
     }
 
     void KillPlayer()
