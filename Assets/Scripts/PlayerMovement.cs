@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _rb = gameObject.GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _alive = true;
     }
 

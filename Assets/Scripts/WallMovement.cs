@@ -8,7 +8,7 @@ public class WallMovement : MonoBehaviour
     void Start()
     {
         _collided = false;
-        _rb = gameObject.GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         transform.position = new Vector3(transform.position.x, Random.Range(-1.5f, 1.5f), transform.position.z);
         Destroy(gameObject, 5.0f);
         
