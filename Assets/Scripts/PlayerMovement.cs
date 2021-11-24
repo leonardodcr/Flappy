@@ -2,28 +2,39 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static bool alive;
     public float velocity;
-    bool _alive;
     Rigidbody2D _rb;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _alive = true;
+        alive = true;
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && _alive) 
+        if (alive && (_rb.position.y < -6 || _rb.position.y > 6))
+        {
+            KillPlayer();
+        }
+
+        if (Input.GetButtonDown("Jump") && alive) 
         {
             _rb.velocity = Vector2.up * velocity;
         }
     }
 
+    void KillPlayer()
+    {
+        alive = false;
+        ScoreKeeper.gameOver = true;
+        Destroy(gameObject, 5f);
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
-        _alive = false;
-        ScoreKeeper.gameOver = true;
+        KillPlayer();
     }
 
     void OnTriggerEnter2D(Collider2D col)
